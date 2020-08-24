@@ -1,6 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": ["airbnb", "eslint:recommended", "plugin:react/recommended"],
+  "extends": ["airbnb", "eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
   "settings": {
     "react": {
       "pragma": "React",
