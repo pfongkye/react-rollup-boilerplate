@@ -7,19 +7,24 @@ export interface IButtonProps {
   disabled?: boolean;
   className?: string;
   text?: string;
+  foo?: Record<string, unknown>;
 }
 
-export const Button: FC<IButtonProps> = ({ onClick, disabled, className, text }) => {
+// eslint-disable-next-line arrow-parens
+export const Button: FC<IButtonProps> = (props) => {
   const x = Date.now() % 2 === 0 ? { test: true } : undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   React.useEffect(() => {
     if (x?.test) {
       console.log("testing");
     }
-  }, [x?.test]);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    console.log(props?.foo?.bar);
+  }, [x?.test, props]);
 
   return (
-    <button type="button" className={cx("button", className)} onClick={onClick} disabled={disabled}>
-      {text}
+    <button type="button" className={cx("button", props.className)} onClick={props.onClick} disabled={props.disabled}>
+      {props.text}
     </button>
   );
 };
